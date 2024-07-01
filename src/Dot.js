@@ -13,7 +13,7 @@ const Dot = (props) => {
 
     <li key={props.colori.id}>
    
-      <span style={cerchio} ></span> {props.colori.nome} 
+       <a href="#">Edit</a>  <span style={cerchio} ></span> {props.colori.nome} 
     </li> 
   );
 };
