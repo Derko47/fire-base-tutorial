@@ -30,7 +30,8 @@ function App() {
     const collectionRef = collection(db,"colori")
     const payload = {nome:nome,valore:valore}
 
-    await addDoc(collectionRef,payload);
+    const docRef = await addDoc(collectionRef,payload);
+    console.log ("Il nuovo documenteo creato " + docRef.id)
 
   };
 
