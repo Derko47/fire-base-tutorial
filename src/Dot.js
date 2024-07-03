@@ -1,3 +1,5 @@
+import { handlerEdit } from "./util";
+
 const Dot = (props) => {
   const cerchio = {
     height: 25,
@@ -8,12 +10,9 @@ const Dot = (props) => {
     display: "inline-block",
   };
 
-
   return (
-
     <li key={props.colori.id}>
-   
-       <a href="#">Edit</a>  <span style={cerchio} ></span> {props.colori.nome} 
+       <a href="#" onClick={() => handlerEdit(props.colori.id)}>Edit </a>  <span style={cerchio} ></span> {props.colori.nome} 
     </li> 
   );
 };

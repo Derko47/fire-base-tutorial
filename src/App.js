@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
-
-//richiama il file creato compiando dal sito di firebase
-import db from "./firebase";
+import { onSnapshot, collection } from "firebase/firestore";
 
 import "./index.css";
 import Dot from "./Dot";
-import { onSnapshot, collection, addDoc, doc } from "firebase/firestore";
+import db from "./firebase";
+import { handlerNuovo } from "./util";
+
 
 
 function App() {
   const [colori, setColori] = useState([
     { nome: "Caricamento dati ...", valore: "Attendere dati ..." },
   ]);
-  console.log(colori);
   //prende i dati dal database
   useEffect(
     () =>
@@ -22,27 +21,14 @@ function App() {
     []
   );
 
-  const handlerNuovo = async () => {
-
-    const nome = prompt("Nome colore");
-    const valore = prompt("Valore colore");
-
-    const collectionRef = collection(db,"colori")
-    const payload = {nome:nome,valore:valore}
-
-    const docRef = await addDoc(collectionRef,payload);
-    console.log ("Il nuovo documenteo creato " + docRef.id)
-
-  };
-
   return (
     <div className="root">
-      <button className="bottone" onClick={handlerNuovo}>
+      <button className="bottone" onClick={handlerNuovo} >
         Nuovo
       </button>
       <ul>
         {colori.map((colore) => (
-          <Dot colori={colore} />
+          <Dot colori={colore}   />
         ))}
       </ul>
     </div>
